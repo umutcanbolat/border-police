@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+    "release": "standard-version"
   },
   "dependencies": {
     "next": "latest",
@@ -14,6 +15,8 @@
     "styled-components": "^4.1.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@types/node": "12.0.12",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
@@ -25,13 +28,28 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
+    "standard-version": "^7.1.0",
     "typescript": "3.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "author": "Umut Canbolat",
   "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/umutcanbolat/border-police/issues"
   },
-  "homepage": "https://github.com/umutcanbolat/border-police#readme"
+  "homepage": "https://github.com/umutcanbolat/border-police#readme",
+  "description": "Border Police instantly shows you a map of the visa-free countries that you can travel to!"
 }

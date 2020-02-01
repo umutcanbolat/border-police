@@ -1,6 +1,9 @@
 # Border Police
 
-[![Build Status](https://travis-ci.org/umutcanbolat/border-police.svg?branch=master)](https://travis-ci.org/umutcanbolat/border-police) <a href="https://www.buymeacoffee.com/1ulP4IGFm" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" height="30" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+[![Build Status](https://travis-ci.org/umutcanbolat/border-police.svg?branch=master)](https://travis-ci.org/umutcanbolat/border-police)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-fe5196.svg)](https://conventionalcommits.org)
+![GitHub](https://img.shields.io/github/license/umutcanbolat/border-police?color=green)
+<a href="https://www.buymeacoffee.com/1ulP4IGFm" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" height="30" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 Border Police instantly shows you a map of the visa-free countries that you can travel to!
 
