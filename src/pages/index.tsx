@@ -1,14 +1,18 @@
 import React from 'react';
+import { NextPage } from 'next';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 const Title = styled.h1`
   font-size: 50px;
 `;
 
-const HomePage: React.FC<{}> = () => {
+const HomePage: NextPage = () => {
   return (
     <>
-      <Title>Border Police</Title>;
+      <Layout title="Home">
+        <Title>Border Police</Title>
+      </Layout>
     </>
   );
 };
