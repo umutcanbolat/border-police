@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Head from 'next/head';
+import styled from 'styled-components';
 import NavBar from './NavBar';
 
 interface Props {
@@ -7,17 +8,33 @@ interface Props {
   title?: string;
 }
 
+const Page = styled.div`
+  display: flex;
+  flex-flow: column;
+  height: inherit;
+`;
+
 const Layout: React.FunctionComponent<Props> = ({ children, title = 'Home' }) => (
-  <div>
+  <>
     <Head>
       <title>{title + ' - Border Police'}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link
+        href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css"
+        rel="stylesheet"
+      />
+      <style>
+        {`
+            #__next { height: inherit }
+          `}
+      </style>
     </Head>
 
-    <NavBar />
-
-    {children}
+    <Page>
+      <NavBar />
+      {children}
+    </Page>
 
     <style jsx global>{`
       html {
@@ -50,7 +67,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'Home' }) =>
         -webkit-font-smoothing: antialiased;
       }
     `}</style>
-  </div>
+  </>
 );
 
 export default Layout;
