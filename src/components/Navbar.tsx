@@ -10,17 +10,12 @@ const Navbar: React.FC<{}> = () => {
         <ul>
           <li>
             <Link href="/">
-              <a className="brand">Border Police</a>
+              <a className="brand">👮 Border Police</a>
             </Link>
           </li>
           <li>
-            <Link href="/privacy">
-              <a>Privacy</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/terms">
-              <a>Terms</a>
+            <Link href="/about">
+              <a>About</a>
             </Link>
           </li>
           <li>
