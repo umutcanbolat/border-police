@@ -18,3 +18,18 @@ export interface VisaInfo {
 export interface VisaCountries {
   [key: string]: VisaInfo;
 }
+
+/**
+ *  stores basic country info
+ */
+export interface Country {
+  name: string;
+  code: string;
+}
+
+/**
+ *  holds the relations between regions and countries
+ */
+export interface Regions {
+  [key: string]: Country[];
+}

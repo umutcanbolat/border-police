@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MAIN_DARK } from './colors';
 
-export const StyledNavbar = styled.header`
+const StyledNavbar = styled.header`
   background: ${MAIN_DARK};
 
   .brand {
@@ -64,3 +64,5 @@ export const StyledNavbar = styled.header`
     margin-left: auto;
   }
 `;
+
+export default StyledNavbar;

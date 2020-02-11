@@ -57,7 +57,13 @@ const Map: React.FC<{}> = () => {
       visaOnArrival = Object.keys(pickBy(visaJSON[countryCode], ctr => ctr === '11'));
       eVisa = Object.keys(pickBy(visaJSON[countryCode], ctr => ctr === '01' || ctr === '12'));
     }
-    setHoverCountry({ countryName, countryCode, visaFree, visaOnArrival, eVisa });
+    setHoverCountry({
+      countryName,
+      countryCode,
+      visaFree,
+      visaOnArrival,
+      eVisa,
+    });
 
     // console.log(countryName, countryCode, mouseLocation);
     // console.log(visaFree);
@@ -70,7 +76,7 @@ const Map: React.FC<{}> = () => {
           {...viewport}
           width="inherit"
           height="inherit"
-          mapStyle="mapbox://styles/mapbox/light-v9"
+          mapStyle="mapbox://styles/mapbox/light-v10"
           onViewportChange={onViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
           onHover={onHover}

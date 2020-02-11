@@ -1,31 +1,47 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Select } from 'antd';
+import StyledSidePanel from '../styles/StyledSidePanel';
+import { Regions } from '../interfaces/mapInterfaces';
 import Cap from '../assets/police-cap.svg';
+import countriesRegionsRaw from '../assets/data/countriesRegions.min.json';
 
-const StyledSidePanel = styled.div`
-  z-index: 99;
-  height: 80%;
-  width: 19rem;
-  display: flex;
-  position: absolute;
-  margin-top: 6rem;
-  margin-left: 1.5rem;
-  background: white;
-
-  svg {
-    width: 9rem;
-    height: 9rem;
-    margin: 0 auto;
-    margin-top: 2rem;
-  }
-`;
+const { Option, OptGroup } = Select;
+const countriesRegions = countriesRegionsRaw as Regions;
 
 const SidePanel: React.FC<{}> = () => {
+  const optionGroups = Object.keys(countriesRegions).map(regionName => {
+    const countries = countriesRegions[regionName];
+    return (
+      <OptGroup key={regionName} label={regionName}>
+        {countries.map(country => {
+          const { name, code } = country;
+          return (
+            <Option key={code} value={code}>
+              {name}
+            </Option>
+          );
+        })}
+      </OptGroup>
+    );
+  });
   return (
     <>
       <StyledSidePanel>
-        {/* <img alt="police-cap" id="cap" src={Cap} /> */}
-        <Cap />
+        <Cap id="cap" />
+        <h1>Border Police</h1>
+
+        <p>
+          Border Police instantly shows you a map of the visa-free countries that you can travel to!
+        </p>
+        <p>Either select a country below or hover on any on the map.</p>
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder="Select a country"
+          optionFilterProp="children"
+        >
+          {optionGroups}
+        </Select>
       </StyledSidePanel>
     </>
   );

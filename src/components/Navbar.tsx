@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import StyledNavbar from '../styles/StyledNavbar';
 import { Container } from '../styles/GlobalStyles';
-import { StyledNavbar } from '../styles/StyledNavbar';
 
 const Navbar: React.FC<{}> = () => {
   return (
