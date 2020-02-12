@@ -17,7 +17,13 @@ const SidePanel: React.FC<{}> = () => {
           const { name, code } = country;
           return (
             <Option key={code} value={code}>
-              {name}
+              <div
+                onMouseOver={(): void => {
+                  console.log('hovered -->', code);
+                }}
+              >
+                {name}
+              </div>
             </Option>
           );
         })}
@@ -36,9 +42,13 @@ const SidePanel: React.FC<{}> = () => {
         <p>Either select a country below or hover on any on the map.</p>
         <Select
           showSearch
+          allowClear
           style={{ width: 200 }}
           placeholder="Select a country"
           optionFilterProp="children"
+          onChange={value => {
+            console.log(value);
+          }}
         >
           {optionGroups}
         </Select>

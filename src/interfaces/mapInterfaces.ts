@@ -33,3 +33,11 @@ export interface Country {
 export interface Regions {
   [key: string]: Country[];
 }
+
+export interface MapHighlightCountry {
+  countryName: string;
+  countryCode: string;
+  visaFree: string[];
+  visaOnArrival: string[];
+  eVisa: string[];
+}
