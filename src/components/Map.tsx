@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import MapGL, { Source, Layer, ViewportProps, PointerEvent } from 'react-map-gl';
+import SidePanel from '../components/SidePanel';
 import { FeatureCollection, Geometry } from 'geojson';
 import { getCountryVisaInfo } from '../utils/mapUtil';
 import { emptyCountry, countriesSourceId } from '../constants/defaultValues';
@@ -99,6 +100,7 @@ const Map: React.FC<{}> = () => {
             <Layer {...hoverLayer} filter={['==', 'name', countryName]} />
           </Source>
         </MapGL>
+        <SidePanel />
       </>
     );
   }, [viewport, hoverCountry, selectedCountry, onClick, onHover, clearHoverCountry]);

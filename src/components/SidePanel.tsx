@@ -2,13 +2,14 @@ import React from 'react';
 import { Select } from 'antd';
 import StyledSidePanel from '../styles/StyledSidePanel';
 import { Regions } from '../interfaces/mapInterfaces';
+import { SidePanelProps } from '../interfaces/sidePanel';
 import Cap from '../assets/police-cap.svg';
 import countriesRegionsRaw from '../assets/data/countriesRegions.min.json';
 
 const { Option, OptGroup } = Select;
 const countriesRegions = countriesRegionsRaw as Regions;
 
-const SidePanel: React.FC<{}> = () => {
+const SidePanel: React.FC<SidePanelProps> = ({ hoveredCountryCode, selectedCountryCode }) => {
   const optionGroups = Object.keys(countriesRegions).map(regionName => {
     const countries = countriesRegions[regionName];
     return (
@@ -16,7 +17,7 @@ const SidePanel: React.FC<{}> = () => {
         {countries.map(country => {
           const { name, code } = country;
           return (
-            <Option key={code} value={code}>
+            <Option key={name} value={code}>
               <div
                 onMouseOver={(): void => {
                   console.log('hovered -->', code);
@@ -43,9 +44,16 @@ const SidePanel: React.FC<{}> = () => {
         <Select
           showSearch
           allowClear
+          filterOption={(input, option): boolean =>
+            option && option.key
+              ? option.key
+                  .toString()
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
+              : false
+          }
           style={{ width: 200 }}
           placeholder="Select a country"
-          optionFilterProp="children"
           onChange={value => {
             console.log(value);
           }}
