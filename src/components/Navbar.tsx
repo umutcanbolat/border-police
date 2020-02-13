@@ -14,14 +14,14 @@ const Navbar: React.FC<{}> = () => {
             </Link>
           </li>
           <li>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
+            {/* <Link href="/about"> */}
+            <a>About</a>
+            {/* </Link> */}
           </li>
           <li>
-            <Link href="/license">
-              <a>License</a>
-            </Link>
+            {/* <Link href="/license"> */}
+            <a>License</a>
+            {/* </Link> */}
           </li>
           <div className="pull-right">
             <li>

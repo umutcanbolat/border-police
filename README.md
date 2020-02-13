@@ -9,7 +9,7 @@ Border Police instantly shows you a map of the visa-free countries that you can 
 
 ## Screenshots
 
-- Will be here soon
+<img src="https://user-images.githubusercontent.com/10065235/74478175-dd7d8e00-4ebd-11ea-82cd-bd4fea4ca5b3.png" width="700" height="342">
 
 ## Credits
 
