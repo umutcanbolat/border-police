@@ -1,3 +1,16 @@
+import {
+  DEFAULT_LAYER_FILL,
+  DEFAULT_LAYER_OUTLINE,
+  MAP_HOVER_FILL,
+  MAP_HOVER_OUTLINE,
+  VISA_FREE_FILL,
+  VISA_FREE_OUTLINE,
+  VISA_ON_ARRIVAL_FILL,
+  VISA_ON_ARRIVAL_OUTLINE,
+  E_VISA_FILL,
+  E_VISA_OUTLINE,
+} from '../styles/colors';
+
 /* beforeId adds these layer before the waterway-label.
  * This prevents country or city names from being hidden under our geojson layer
  */
@@ -6,8 +19,8 @@ export const countriesLayer = {
   type: 'fill',
   beforeId: 'waterway-label',
   paint: {
-    'fill-outline-color': 'rgba(0,0,0,0.1)',
-    'fill-color': 'rgba(0,0,0,0)',
+    'fill-color': DEFAULT_LAYER_FILL,
+    'fill-outline-color': DEFAULT_LAYER_OUTLINE,
   },
 };
 
@@ -16,8 +29,8 @@ export const hoverLayer = {
   type: 'fill',
   beforeId: 'waterway-label',
   paint: {
-    'fill-outline-color': 'rgb(0, 0, 0)',
-    'fill-color': 'rgba(0, 0, 0, 0.2)',
+    'fill-color': MAP_HOVER_FILL,
+    'fill-outline-color': MAP_HOVER_OUTLINE,
   },
 };
 
@@ -26,8 +39,8 @@ export const visaFreeLayer = {
   type: 'fill',
   beforeId: 'waterway-label',
   paint: {
-    'fill-outline-color': 'rgb(0, 230, 0)',
-    'fill-color': 'rgba(0, 255, 0, 0.2)',
+    'fill-color': VISA_FREE_FILL,
+    'fill-outline-color': VISA_FREE_OUTLINE,
   },
 };
 
@@ -36,8 +49,8 @@ export const visaOnArrivalLayer = {
   type: 'fill',
   beforeId: 'waterway-label',
   paint: {
-    'fill-outline-color': 'rgba(0, 102, 51, 0.2)',
-    'fill-color': 'rgba(0, 102, 51, 0.2)',
+    'fill-color': VISA_ON_ARRIVAL_FILL,
+    'fill-outline-color': VISA_ON_ARRIVAL_OUTLINE,
   },
 };
 
@@ -46,7 +59,7 @@ export const eVisaLayer = {
   type: 'fill',
   beforeId: 'waterway-label',
   paint: {
-    'fill-outline-color': 'rgb(204, 204, 0)',
-    'fill-color': 'rgba(255, 255, 0, 0.2)',
+    'fill-color': E_VISA_FILL,
+    'fill-outline-color': E_VISA_OUTLINE,
   },
 };

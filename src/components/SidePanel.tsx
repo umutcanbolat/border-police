@@ -60,11 +60,27 @@ const SidePanel: React.FC<SidePanelProps> = ({
             filterOption={onFilter}
             style={{ width: 200 }}
             placeholder="Select a country"
-            value={hoveredCountryCode || selectedCountryCode}
+            value={hoveredCountryCode || selectedCountryCode || undefined}
             onChange={onChange}
           >
             {optionGroups}
           </Select>
+
+          {/* TODO: Extract color palette to a new component */}
+          <div className="color-palette">
+            <div className="palette">
+              <div id="visaFree" className="box"></div>
+              <span>Visa Free</span>
+            </div>
+            <div className="palette">
+              <div id="visaOnArrival" className="box"></div>
+              <span>Visa on Arrival</span>
+            </div>
+            <div className="palette">
+              <div id="eVisa" className="box"></div>
+              <span>e-Visa</span>
+            </div>
+          </div>
         </StyledSidePanel>
       </>
     );

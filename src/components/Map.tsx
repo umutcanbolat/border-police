@@ -19,8 +19,8 @@ const countriesJSON = countriesRaw as FeatureCollection<Geometry>;
 
 const Map: React.FC<{}> = () => {
   const [viewport, setViewport] = useState({
-    latitude: 27.9,
-    longitude: 14.6,
+    latitude: 30.5,
+    longitude: -26.9,
     zoom: 1.5,
     bearing: 0,
     pitch: 0,
