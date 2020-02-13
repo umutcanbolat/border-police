@@ -41,3 +41,13 @@ export interface MapHighlightCountry {
   visaOnArrival: string[];
   eVisa: string[];
 }
+
+/**
+ *  Mappings of country codes and country names
+ *
+ *  ex: TR: Turkey
+ *
+ */
+export interface CountryCodesInfo {
+  [key: string]: string;
+}

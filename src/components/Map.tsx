@@ -2,7 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import MapGL, { Source, Layer, ViewportProps, PointerEvent } from 'react-map-gl';
 import SidePanel from '../components/SidePanel';
 import { FeatureCollection, Geometry } from 'geojson';
-import { getCountryVisaInfo } from '../utils/mapUtil';
+import { getCountryVisaInfo, getCountryVisaInfoByCode } from '../utils/mapUtil';
+import { useMapCountry } from '../hooks/mapHooks';
 import { emptyCountry, countriesSourceId } from '../constants/defaultValues';
 import {
   countriesLayer,
@@ -25,34 +26,29 @@ const Map: React.FC<{}> = () => {
     pitch: 0,
   });
 
-  const [hoverCountry, setHoverCountry] = useState(emptyCountry);
-  const [selectedCountry, setSelectedCountry] = useState(emptyCountry);
+  const [hoverCountry, setHoverCountry] = useMapCountry(emptyCountry);
+  const [selectedCountry, setSelectedCountry] = useMapCountry(emptyCountry);
 
-  const onViewportChange = useCallback((viewState: ViewportProps): void => {
+  const onViewportChange = (viewState: ViewportProps): void => {
+    // TODO: consider throttling here
     setViewport(viewState);
-  }, []);
+  };
 
-  const clearHoverCountry = useCallback(() => {
+  const clearHoverCountry = (): void => {
     setHoverCountry(emptyCountry);
-  }, []);
+  };
 
-  const clearSelectedCountry = useCallback(() => {
+  const clearSelectedCountry = (): void => {
     setSelectedCountry(emptyCountry);
+  };
+
+  const changeSelectedCountry = useCallback((countryCode: string): void => {
+    setSelectedCountry(getCountryVisaInfoByCode(countryCode));
   }, []);
 
-  const onHover = useCallback((event: PointerEvent): void => {
-    const { countryName, countryCode, visaFree, visaOnArrival, eVisa } = getCountryVisaInfo(
-      event.features,
-    );
-
-    setHoverCountry({
-      countryName,
-      countryCode,
-      visaFree,
-      visaOnArrival,
-      eVisa,
-    });
-  }, []);
+  const onHover = (event: PointerEvent): void => {
+    setHoverCountry(getCountryVisaInfo(event.features));
+  };
 
   const onClick = useCallback(
     (event: PointerEvent): void => {
@@ -63,6 +59,7 @@ const Map: React.FC<{}> = () => {
       if (countryCode === selectedCountry.countryCode) {
         // if user clicks on the selected country again, clean selection
         clearSelectedCountry();
+        clearHoverCountry();
       } else {
         setSelectedCountry({
           countryName,
@@ -73,12 +70,13 @@ const Map: React.FC<{}> = () => {
         });
       }
     },
-    [selectedCountry, clearSelectedCountry],
+    [selectedCountry],
   );
 
   return useMemo(() => {
     const { visaFree, visaOnArrival, eVisa, countryName } =
       hoverCountry.countryName !== '' ? hoverCountry : selectedCountry;
+
     return (
       <>
         <MapGL
@@ -100,10 +98,14 @@ const Map: React.FC<{}> = () => {
             <Layer {...hoverLayer} filter={['==', 'name', countryName]} />
           </Source>
         </MapGL>
-        <SidePanel />
+        <SidePanel
+          hoveredCountryCode={hoverCountry.countryCode}
+          selectedCountryCode={selectedCountry.countryCode}
+          onSelect={changeSelectedCountry}
+        />
       </>
     );
-  }, [viewport, hoverCountry, selectedCountry, onClick, onHover, clearHoverCountry]);
+  }, [viewport, hoverCountry, selectedCountry, onClick]);
 };
 
 export default Map;
