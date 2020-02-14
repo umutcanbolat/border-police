@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const withCss = require('@zeit/next-css');
+const prod = process.env.NODE_ENV === 'production';
 
 module.exports = withCss({
   webpack: (config, { isServer }) => {
@@ -31,4 +32,6 @@ module.exports = withCss({
     token:
       'pk.eyJ1IjoidW11dGNhbmJvbGF0IiwiYSI6ImNrNjNjOHA2ZzBsczYzdHF3NWttZmZwYXUifQ.uDyzyLLyl7EwKbcwXc6cDA',
   },
+  // gh-pages endpoint here
+  assetPrefix: prod ? '/border-police/' : '',
 });

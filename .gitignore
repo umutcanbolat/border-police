@@ -10,7 +10,8 @@
 
 # next.js
 /.next/
-/out/
+# do not ignore out folder to be able to publish it on gh-pages branch
+# /out/
 
 # production
 /build
