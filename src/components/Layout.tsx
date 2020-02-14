@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import NavBar from './NavBar';
+import Navbar from './Navbar';
 
 interface Props {
   children: JSX.Element[] | JSX.Element;
@@ -32,7 +32,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'Home' }) =>
     </Head>
 
     <Page>
-      <NavBar />
+      <Navbar />
       {children}
     </Page>
 
