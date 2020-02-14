@@ -1,4 +1,4 @@
-sudo: false
+os: linux
 language: node_js
 node_js:
   - 10
@@ -18,8 +18,7 @@ jobs:
         - yarn deploy
       deploy:
         provider: pages
-        skip_cleanup: true # prevents travis from cleaning build files
-        github_token: $GITHUB_TOKEN
+        token: $GITHUB_TOKEN
         local_dir: out # deployment folder
         target_branch: gh-pages
         keep_history: false # force push
