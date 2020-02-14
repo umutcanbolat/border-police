@@ -19,8 +19,7 @@ jobs:
       deploy:
         provider: pages
         token: $GITHUB_TOKEN
-        local_dir: out # deployment folder
-        target_branch: gh-pages
+        local_dir: 'out' # deployment folder
         keep_history: false # force push
         on:
           branch: master
