@@ -5,15 +5,17 @@ node_js:
   - 'stable'
 cache:
   directories:
+    - $HOME/.cache/yarn
     - node_modules
+    - .next/cache
 script:
-  - npm run build
+  - yarn build
 jobs:
   include:
     - stage: release to gh-pages
       script:
         - echo "Deploying to GitHub pages ..."
-        - npm run build
+        - yarn deploy
       deploy:
         provider: pages
         skip_cleanup: true # prevents travis from cleaning build files
