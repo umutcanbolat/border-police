@@ -19,6 +19,7 @@ jobs:
       deploy:
         provider: pages
         token: $GITHUB_TOKEN
+        skip_cleanup: true # do not stash build files
         local_dir: 'out' # deployment folder
         keep_history: false # force push
         on:
