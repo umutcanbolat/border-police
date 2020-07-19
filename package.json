@@ -16,7 +16,7 @@
     "@zeit/next-css": "^1.0.1",
     "antd": "^3.26.9",
     "babel-plugin-import": "^1.13.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "next": "latest",
     "null-loader": "^3.0.0",
     "react": "16.8.6",
